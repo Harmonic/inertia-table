@@ -1,6 +1,6 @@
 {
-    "name": "harmonic/inertiatable",
-    "description": ":description",
+    "name": "harmonic/inertia-table",
+    "description": "Easily create Inertia JS tables from Eloquent models",
     "license": "MIT",
     "authors": [
         {

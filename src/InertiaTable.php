@@ -4,6 +4,7 @@ namespace harmonic\InertiaTable;
 
 use harmonic\InertiaTable\InertiaModel;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Request;
 
@@ -24,7 +25,7 @@ class InertiaTable
             $columns = Schema::getColumnListing($table);
         }
 
-        return Inertia::render($modelName . '/Index', [
+        return Inertia::render(Str::plural($modelName) . '/Index', [
             'filters' => Request::all('search', 'trashed'),
             'order' => Request::all('orderColumn', 'orderDirection'),
             'users' => $model

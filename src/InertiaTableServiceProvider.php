@@ -6,6 +6,11 @@ use Illuminate\Support\ServiceProvider;
 
 class InertiaTableServiceProvider extends ServiceProvider
 {
+    protected $commands = [
+        'harmonic\InertiaTable\Commands\MakeInertiaTable',
+    ];
+    
+    
     /**
      * Perform post-registration booting of services.
      *
@@ -32,6 +37,8 @@ class InertiaTableServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/inertiatable.php', 'inertiatable');
+
+        $this->commands($this->commands);
 
         // Register the service the package provides.
         $this->app->singleton('inertiatable', function ($app) {

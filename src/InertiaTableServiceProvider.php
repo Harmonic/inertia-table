@@ -3,6 +3,7 @@
 namespace harmonic\InertiaTable;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class InertiaTableServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,24 @@ class InertiaTableServiceProvider extends ServiceProvider
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'harmonic');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
+
+        // Easily create all the inertia routes
+        Route::macro('inertia', function ($routeName) {
+            $routeName = strtolower($routeName);
+            $controller = ucfirst($routeName) . 'Controller';
+            
+            Route::group([
+                'prefix' => '/' . $routeName,
+            ], function () use ($controller, $routeName) {
+                Route::get('/')->name($routeName)->uses($controller . '@index')->middleware('remember');
+                Route::get('/create')->name($routeName . '.create')->uses($controller . '@create');
+                Route::post('')->name($routeName . '.store')->uses($controller . '@store');
+                Route::get('/{user}/edit')->name($routeName . '.edit')->uses($controller . '@edit');
+                Route::put('/{user}')->name($routeName . '.update')->uses($controller . '@update');
+                Route::delete('/{user}')->name($routeName . '.destroy')->uses($controller . '@destroy');
+                Route::put('/{user}/restore')->name($routeName . '.restore')->uses($controller . '@restore');
+            });
+        });
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {

@@ -56,6 +56,9 @@ class MakeInertiaTable extends Command
         $str = str_replace("@modelName", $model, $str);
         file_put_contents(app_path('Http/Controllers/' . $controllerName . '.php'), $str);
 
+        //TODO: Add routes
+        $this->warn('You need to manually add route: Route::inertia(\''. Str::plural(strtolower($model)) . '\');');
+
         //TODO: Create a InertiaTable.vue component and then create Index.vue using it
         $this->info('Model, Controller and Vue Components successfully created.');
     }

@@ -5,9 +5,11 @@
 [![Build Status][ico-travis]][link-travis]
 [![StyleCI][ico-styleci]][link-styleci]
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+Easily create tables using InertiaJS (and Tailwind CSS) and Laravel Models. Tables can be filtered and sorted.
 
 ## Installation
+
+This package requires InertiaJS to be installed in you rproject.
 
 Via Composer
 
@@ -16,6 +18,49 @@ $ composer require harmonic/inertiatable
 ```
 
 ## Usage
+
+### Via CLI
+
+The quickest and easiest way to create an Inertia Table is using a single Artisan command. It will create the model, controller and Vue components for you automatically simply by supplying a model name as an argument.
+
+``` bash
+$ php artisan make:inertiaTable User
+```
+Where User is the name of the model you wish to create. See the manual process below for what is created.
+
+### Manually
+
+1) Modify your model so that it extends InertiaModel instead of model:
+
+``` php
+use harmonic\InertiaTable\InertiaModel;
+
+class user extends InertialModel {
+    protected $perPage = 10; // Controlls number of items per page
+...
+```
+
+2) Create a controller:
+
+UsersController.php
+``` php 
+namespace App\Http\Controllers;
+
+use harmonic\InertiaTable\Facades\InertiaTable;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+
+class UsersController extends Controller {
+    public function index() {
+        $user = new User();
+        return InertiaTable::index($user, ['id', 'name', 'email', 'deleted_at']);
+    }    
+}
+```
+The index method takes a model and an array of column names which you wish to display as parameters. The array is optional, InertiaTable will show all columns by default.
 
 ## Change log
 

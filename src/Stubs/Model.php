@@ -4,7 +4,7 @@ namespace @namespace;
 
 use harmonic\InertiaTable\InertiaModel;
 
-abstract class @modelName extends InertiaModel {
+class @modelName extends InertiaModel {
 	
 	/**
 	 * Pagination items per page to display in table

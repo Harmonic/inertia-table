@@ -34,7 +34,7 @@ class InertiaTableServiceProvider extends ServiceProvider
             ], function () use ($controller, $routeName) {
                 Route::get('/')->name($routeName)->uses($controller . '@index')->middleware('remember');
                 Route::get('/create')->name($routeName . '.create')->uses($controller . '@create');
-                Route::post('')->name($routeName . '.store')->uses($controller . '@store');
+                Route::post('/')->name($routeName . '.store')->uses($controller . '@store');
                 Route::get('/{user}/edit')->name($routeName . '.edit')->uses($controller . '@edit');
                 Route::put('/{user}')->name($routeName . '.update')->uses($controller . '@update');
                 Route::delete('/{user}')->name($routeName . '.destroy')->uses($controller . '@destroy');

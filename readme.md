@@ -64,6 +64,8 @@ class UsersController extends Controller {
 ```
 The index method takes a model and an array of column names which you wish to display as parameters. The array is optional, InertiaTable will show all columns by default.
 
+3) You will need to create your front end. It is recommend you use [inertia-table-vue](https://github.com/Harmonic/inertia-table-vue) for Vue projects. A JS example is provided at the bottom of [that repository](https://github.com/Harmonic/inertia-table-vue).
+
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.

@@ -96,11 +96,11 @@ MIT. Please see the [license file](license.md) for more information.
 [ico-version]: https://img.shields.io/packagist/v/harmonic/inertia-table.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/harmonic/inertia-table.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/harmonic/inertia-table/master.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/12345678/shield
+[ico-styleci]: https://styleci.io/repos/192192722/shield
 
 [link-packagist]: https://packagist.org/packages/harmonic/inertia-table
 [link-downloads]: https://packagist.org/packages/harmonic/inertia-table
 [link-travis]: https://travis-ci.org/harmonic/inertia-table
-[link-styleci]: https://styleci.io/repos/12345678
+[link-styleci]: https://styleci.io/repos/192192722
 [link-author]: https://github.com/harmonic
 [link-contributors]: ../../contributors

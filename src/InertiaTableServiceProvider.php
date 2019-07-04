@@ -2,16 +2,15 @@
 
 namespace harmonic\InertiaTable;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 
 class InertiaTableServiceProvider extends ServiceProvider
 {
     protected $commands = [
         'harmonic\InertiaTable\Commands\MakeInertiaTable',
     ];
-    
-    
+
     /**
      * Perform post-registration booting of services.
      *
@@ -27,18 +26,18 @@ class InertiaTableServiceProvider extends ServiceProvider
         // Easily create all the inertia routes
         Route::macro('inertia', function ($routeName) {
             $routeName = strtolower($routeName);
-            $controller = ucfirst($routeName) . 'Controller';
-            
+            $controller = ucfirst($routeName).'Controller';
+
             Route::group([
-                'prefix' => '/' . $routeName,
+                'prefix' => '/'.$routeName,
             ], function () use ($controller, $routeName) {
-                Route::get('/')->name($routeName)->uses($controller . '@index')->middleware('remember');
-                Route::get('/create')->name($routeName . '.create')->uses($controller . '@create');
-                Route::post('/')->name($routeName . '.store')->uses($controller . '@store');
-                Route::get('/{user}/edit')->name($routeName . '.edit')->uses($controller . '@edit');
-                Route::put('/{user}')->name($routeName . '.update')->uses($controller . '@update');
-                Route::delete('/{user}')->name($routeName . '.destroy')->uses($controller . '@destroy');
-                Route::put('/{user}/restore')->name($routeName . '.restore')->uses($controller . '@restore');
+                Route::get('/')->name($routeName)->uses($controller.'@index')->middleware('remember');
+                Route::get('/create')->name($routeName.'.create')->uses($controller.'@create');
+                Route::post('/')->name($routeName.'.store')->uses($controller.'@store');
+                Route::get('/{user}/edit')->name($routeName.'.edit')->uses($controller.'@edit');
+                Route::put('/{user}')->name($routeName.'.update')->uses($controller.'@update');
+                Route::delete('/{user}')->name($routeName.'.destroy')->uses($controller.'@destroy');
+                Route::put('/{user}/restore')->name($routeName.'.restore')->uses($controller.'@restore');
             });
         });
 
@@ -74,7 +73,7 @@ class InertiaTableServiceProvider extends ServiceProvider
     {
         return ['inertiatable'];
     }
-    
+
     /**
      * Console-specific booting.
      *

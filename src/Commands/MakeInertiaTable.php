@@ -2,12 +2,12 @@
 
 namespace harmonic\InertiaTable\Commands;
 
+use File;
+use Illuminate\Support\Str;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Schema;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
-use Illuminate\Support\Str;
-use File;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Console\Command;
 
 class MakeInertiaTable extends Command
 {
@@ -37,13 +37,14 @@ class MakeInertiaTable extends Command
         parent::__construct();
     }
 
-    private function inertiaTableJSExists() {
+    private function inertiaTableJSExists()
+    {
         $process = new Process('npm list --depth=0 | grep inertia-table');
         $process->run();
-        
+
         // executes after the command finishes
-        if (!$process->isSuccessful()) {
-            if ($process->getOutput()=="") {
+        if (! $process->isSuccessful()) {
+            if ($process->getOutput() == '') {
                 return false;
             }
             $this->error('Failed looking for inertia-table JS package. Is inertia installed?');
@@ -54,6 +55,7 @@ class MakeInertiaTable extends Command
         if (strpos($result, ' inertia-table@') !== false) {
             return true;
         }
+
         return false;
     }
 
@@ -66,43 +68,43 @@ class MakeInertiaTable extends Command
     {
         $model = ucfirst($this->argument('model'));
 
-        if (!file_exists(app_path($model).'.php') && !file_exists(app_path('Models\\' . $model).'.php')) {
+        if (! file_exists(app_path($model).'.php') && ! file_exists(app_path('Models\\'.$model).'.php')) {
             // Create Model
-            $str = file_get_contents(__DIR__ . '/../Stubs/Model.php');
-            $str = str_replace("@namespace", substr($this->getAppNamespace(), 0, -1), $str);
-            $str = str_replace("@modelName", $model, $str);
-            file_put_contents(app_path($model . '.php'), $str);
+            $str = file_get_contents(__DIR__.'/../Stubs/Model.php');
+            $str = str_replace('@namespace', substr($this->getAppNamespace(), 0, -1), $str);
+            $str = str_replace('@modelName', $model, $str);
+            file_put_contents(app_path($model.'.php'), $str);
         }
 
         // Create Controller
         $pluralName = Str::plural($model);
-        $controllerName = $pluralName . 'Controller';
-        $str = file_get_contents(__DIR__ . '/../Stubs/Controller.php');
-        $str = str_replace("@namespace", substr($this->getAppNamespace(), 0, -1), $str);
-        $str = str_replace("@controllerName", $controllerName, $str);
-        $str = str_replace("@modelName", $model, $str);
-        file_put_contents(app_path('Http/Controllers/' . $controllerName . '.php'), $str);
+        $controllerName = $pluralName.'Controller';
+        $str = file_get_contents(__DIR__.'/../Stubs/Controller.php');
+        $str = str_replace('@namespace', substr($this->getAppNamespace(), 0, -1), $str);
+        $str = str_replace('@controllerName', $controllerName, $str);
+        $str = str_replace('@modelName', $model, $str);
+        file_put_contents(app_path('Http/Controllers/'.$controllerName.'.php'), $str);
 
         // Add routes
-        $this->warn('You need to manually add route: Route::inertia(\''. Str::plural(strtolower($model)) . '\');');
+        $this->warn('You need to manually add route: Route::inertia(\''.Str::plural(strtolower($model)).'\');');
 
         if ($this->inertiaTableJSExists()) {
             $pluralNameLowercase = \strtolower($pluralName);
             $modelLowercase = \strtolower($model);
 
             // Get column names from table
-            $class = 'App\\' . $model;
+            $class = 'App\\'.$model;
             $columns = Schema::getColumnListing(with(new $class)->getTable());
-            
+
             // Create an InertiaTable.vue component and then create Index.vue using it
-            $tableElementPath = resource_path('js/Pages/' . $pluralName);
+            $tableElementPath = resource_path('js/Pages/'.$pluralName);
             File::makeDirectory($tableElementPath, 0755, true);
-            $str = file_get_contents(__DIR__ . '/../Stubs/Index.vue');
-            $str = str_replace("@pluralNameLowercase", $pluralNameLowercase, $str);
-            $str = str_replace("@plural", $pluralName, $str);
-            $str = str_replace("@columns", implode(",", $columns), $str);
-            $str = str_replace("@modelLowercase", $modelLowercase, $str);
-            file_put_contents($tableElementPath . '/Index.vue', $str);
+            $str = file_get_contents(__DIR__.'/../Stubs/Index.vue');
+            $str = str_replace('@pluralNameLowercase', $pluralNameLowercase, $str);
+            $str = str_replace('@plural', $pluralName, $str);
+            $str = str_replace('@columns', implode(',', $columns), $str);
+            $str = str_replace('@modelLowercase', $modelLowercase, $str);
+            file_put_contents($tableElementPath.'/Index.vue', $str);
         }
 
         $this->info('Model, Controller and Vue Components successfully created.');

@@ -1,4 +1,4 @@
-# InertiaTable
+# Inertia Table
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -16,7 +16,7 @@ This package requires InertiaJS to be installed in your project.
 Via Composer
 
 ``` bash
-$ composer require harmonic/inertiatable
+$ composer require harmonic/inertia-table
 ```
 
 ## Usage

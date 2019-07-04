@@ -6,10 +6,12 @@
 [![StyleCI][ico-styleci]][link-styleci]
 
 Easily create tables using InertiaJS (and Tailwind CSS) and Laravel Models. Tables can be filtered and sorted.
+Can scaffold an entire model with one artisan command!
 
 ## Installation
 
-This package requires InertiaJS to be installed in you rproject.
+This package requires InertiaJS to be installed in your project.
+**It is strongly recommended that you also install to corresponding Vue component [inertia-table-vue](https://github.com/Harmonic/inertia-table-vue) to allow end to end scaffolding of an Inertia table in Vue **
 
 Via Composer
 

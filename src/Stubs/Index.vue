@@ -2,7 +2,16 @@
   <span>
     <h1 class="mb-8 font-bold text-3xl">@plural</h1>
     
-    <inertia-table :data="@pluralNameLowercase" id="id" :order="order" :filters="filters" :columns="columns" routeName="@pluralNameLowercase" createLink="@pluralNameLowercase.create" @item-selected="show"></inertia-table>
+    <inertia-table 
+      :data="@pluralNameLowercase" 
+      id="id" 
+      :order="order" 
+      :filters="filters" 
+      :columns="columns" 
+      routeName="@pluralNameLowercase" 
+      createLink="@pluralNameLowercase.create" 
+      @item-selected="show">
+    </inertia-table>
     
   </span>
 </template>

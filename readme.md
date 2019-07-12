@@ -8,6 +8,8 @@
 Easily create tables using InertiaJS (and Tailwind CSS) and Laravel Models. Tables can be filtered and sorted.
 Can scaffold an entire model with one artisan command!
 
+[![Laravel Preset - Click for video]([docs/laravel-preset-screenshot.png](https://github.com/Harmonic/laravel-preset/raw/master/docs/laravel-preset-screenshot.png))](https://www.youtube.com/watch?v=K_d_RboHBbI&feature=youtu.be)
+
 ## Installation
 
 This package requires InertiaJS to be installed in your project.

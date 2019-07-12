@@ -30,7 +30,7 @@ class InertiaTable {
             'order' => Request::all('orderColumn', 'orderDirection'),
             strtolower($modelPlural) => $model
                 ->order(Request::input('orderColumn') ?? 'name', Request::input('orderDirection'))
-                ->filter(Request::only('search', 'trashed'), ['name', 'email'])
+                ->filter(Request::only('search', 'trashed'), $columns)
                 ->get()
                 ->transform(function ($item) use ($columns) {
                     $data = [];

@@ -7,7 +7,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Request;
 
-class InertiaTable {
+class InertiaTable
+{
     /**
      * Generates inertia view data for model.
      *
@@ -15,7 +16,8 @@ class InertiaTable {
      * @param array $columns An array of column names to send to front end (null for all columns)
      * @return void
      */
-    public function index(InertiaModel $model, array $columns = null) {
+    public function index(InertiaModel $model, array $columns = null)
+    {
         $modelName = class_basename($model);
 
         if ($columns == null) { // default to all columns
@@ -25,7 +27,7 @@ class InertiaTable {
 
         $modelPlural = Str::plural($modelName);
 
-        return Inertia::render($modelPlural . '/Index', [
+        return Inertia::render($modelPlural.'/Index', [
             'filters' => Request::all('search', 'trashed'),
             'order' => Request::all('orderColumn', 'orderDirection'),
             strtolower($modelPlural) => $model

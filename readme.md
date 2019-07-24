@@ -68,7 +68,25 @@ The index method takes a model and an array of column names which you wish to di
 
 You can also stipulate which columns can be searched by adding a third parameter, an array of column names that can be filtered. If left blank all columns are searchable.
 
-3) You will need to create your front end. It is recommend you use [inertia-table-vue](https://github.com/Harmonic/inertia-table-vue) for Vue projects. A JS example is provided at the bottom of [that repository](https://github.com/Harmonic/inertia-table-vue).
+3) Add your routes in web.php. You can do these manually or using the custom inertia route included with this package:
+
+``` php
+Route::inertia('users');
+```
+
+This will generate all your crud routes:
+
+| Method   | URI                | Action                                       |
+|----------|--------------------|----------------------------------------------|
+| GET | users              | App\Http\Controllers\UsersController@index   |
+| POST     | users              | App\Http\Controllers\UsersController@store   |
+| DELETE   | users/$uri         | App\Http\Controllers\UsersController@destroy |
+| PUT      | users/$uri         | App\Http\Controllers\UsersController@update  |
+| GET | users/$uri/edit    | App\Http\Controllers\UsersController@edit    |
+| PUT      | users/$uri/restore | App\Http\Controllers\UsersController@restore |
+| GET | users/create       | App\Http\Controllers\UsersController@create  |
+
+4) You will need to create your front end. It is recommend you use [inertia-table-vue](https://github.com/Harmonic/inertia-table-vue) for Vue projects. A JS example is provided at the bottom of [that repository](https://github.com/Harmonic/inertia-table-vue).
 
 ## Change log
 

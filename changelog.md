@@ -2,6 +2,15 @@
 
 All notable changes to `InertiaTable` will be documented in this file.
 
+## Version 1.0.3
+
+### Fixed
+- Removed hard coded {user} inertia route
+- Allow editing of soft deleted models
+
+### Added
+- Added route explanation to readme
+
 ## Version 1.0.2
 
 ### Added

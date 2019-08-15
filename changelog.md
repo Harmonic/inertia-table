@@ -2,6 +2,11 @@
 
 All notable changes to `InertiaTable` will be documented in this file.
 
+## Version 1.0.4
+
+### Modified
+- Updated Laravel Inertia package to v0.1.0
+
 ## Version 1.0.3
 
 ### Fixed

@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b98ee825003f309e320216f8237a8287",
+    "content-hash": "36db4c5f3bf65f01f6a076d0e536280e",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -292,16 +292,16 @@
         },
         {
             "name": "inertiajs/inertia-laravel",
-            "version": "dev-master",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inertiajs/inertia-laravel.git",
-                "reference": "d09e6b1284266212dac3db3704775309c170b999"
+                "reference": "2bdd1af10f488007a8981b66982d011054464e88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/d09e6b1284266212dac3db3704775309c170b999",
-                "reference": "d09e6b1284266212dac3db3704775309c170b999",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/2bdd1af10f488007a8981b66982d011054464e88",
+                "reference": "2bdd1af10f488007a8981b66982d011054464e88",
                 "shasum": ""
             },
             "require-dev": {
@@ -318,7 +318,10 @@
             "autoload": {
                 "psr-4": {
                     "Inertia\\": "src"
-                }
+                },
+                "files": [
+                    "./helpers.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -336,7 +339,7 @@
                 "inertia",
                 "laravel"
             ],
-            "time": "2019-06-21T15:47:53+00:00"
+            "time": "2019-08-10T13:58:04+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4288,9 +4291,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "inertiajs/inertia-laravel": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

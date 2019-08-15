@@ -13,7 +13,7 @@
     "keywords": ["Laravel", "inertiajs", "inertia", "InertiaTable"],
     "require": {
         "illuminate/support": "~5",
-        "inertiajs/inertia-laravel": "dev-master",
+        "inertiajs/inertia-laravel": "^0.1.0",
         "symfony/process": "^4.3"
     },
     "require-dev": {

@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     show(@modelLowercase) {
-      this.$inertia.replace(this.route('@pluralNameLowercase.edit', @modelLowercase.id));
+      this.$inertia.replace('/' + this.route('@pluralNameLowercase.edit', @modelLowercase.id));
     }
   },
 }

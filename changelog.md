@@ -2,6 +2,11 @@
 
 All notable changes to `InertiaTable` will be documented in this file.
 
+## Version 1.0.5
+
+### Fixed
+- Updated inertia route macro to be named inertiaTable to stop conflicts with Inertia-Laravel package route of Inertia
+
 ## Version 1.0.4
 
 ### Modified

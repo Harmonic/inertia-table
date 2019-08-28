@@ -71,7 +71,7 @@ You can also stipulate which columns can be searched by adding a third parameter
 3) Add your routes in web.php. You can do these manually or using the custom inertia route included with this package:
 
 ``` php
-Route::inertia('users');
+Route::inertiaTable('users');
 ```
 
 This will generate all your crud routes:

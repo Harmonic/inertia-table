@@ -5,7 +5,8 @@ namespace harmonic\InertiaTable;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-class InertiaTableServiceProvider extends ServiceProvider {
+class InertiaTableServiceProvider extends ServiceProvider
+{
     protected $commands = [
         'harmonic\InertiaTable\Commands\MakeInertiaTable',
     ];
@@ -15,7 +16,8 @@ class InertiaTableServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
+    public function boot()
+    {
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'harmonic');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'harmonic');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
@@ -24,18 +26,18 @@ class InertiaTableServiceProvider extends ServiceProvider {
         // Easily create all the inertia routes
         Route::macro('inertiaTable', function ($routeName) {
             $routeName = strtolower($routeName);
-            $controller = ucfirst($routeName) . 'Controller';
+            $controller = ucfirst($routeName).'Controller';
 
             Route::group([
-                'prefix' => '/' . $routeName,
+                'prefix' => '/'.$routeName,
             ], function () use ($controller, $routeName) {
-                Route::get('/')->name($routeName)->uses($controller . '@index')->middleware('remember');
-                Route::get('/create')->name($routeName . '.create')->uses($controller . '@create');
-                Route::post('/')->name($routeName . '.store')->uses($controller . '@store');
-                Route::get('/{' . $routeName . '}/edit')->name($routeName . '.edit')->uses($controller . '@edit');
-                Route::put('/{' . $routeName . '}')->name($routeName . '.update')->uses($controller . '@update');
-                Route::delete('/{' . $routeName . '}')->name($routeName . '.destroy')->uses($controller . '@destroy');
-                Route::put('/{' . $routeName . '}/restore')->name($routeName . '.restore')->uses($controller . '@restore');
+                Route::get('/')->name($routeName)->uses($controller.'@index')->middleware('remember');
+                Route::get('/create')->name($routeName.'.create')->uses($controller.'@create');
+                Route::post('/')->name($routeName.'.store')->uses($controller.'@store');
+                Route::get('/{'.$routeName.'}/edit')->name($routeName.'.edit')->uses($controller.'@edit');
+                Route::put('/{'.$routeName.'}')->name($routeName.'.update')->uses($controller.'@update');
+                Route::delete('/{'.$routeName.'}')->name($routeName.'.destroy')->uses($controller.'@destroy');
+                Route::put('/{'.$routeName.'}/restore')->name($routeName.'.restore')->uses($controller.'@restore');
             });
         });
 
@@ -50,8 +52,9 @@ class InertiaTableServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
-        $this->mergeConfigFrom(__DIR__ . '/../config/inertiatable.php', 'inertiatable');
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__.'/../config/inertiatable.php', 'inertiatable');
 
         $this->commands($this->commands);
 
@@ -66,7 +69,8 @@ class InertiaTableServiceProvider extends ServiceProvider {
      *
      * @return array
      */
-    public function provides() {
+    public function provides()
+    {
         return ['inertiatable'];
     }
 
@@ -75,10 +79,11 @@ class InertiaTableServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    protected function bootForConsole() {
+    protected function bootForConsole()
+    {
         // Publishing the configuration file.
         $this->publishes([
-            __DIR__ . '/../config/inertiatable.php' => config_path('inertiatable.php'),
+            __DIR__.'/../config/inertiatable.php' => config_path('inertiatable.php'),
         ], 'inertiatable.config');
 
         // Publishing the views.

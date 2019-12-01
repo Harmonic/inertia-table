@@ -12,14 +12,14 @@
     "homepage": "https://github.com/harmonic/inertiatable",
     "keywords": ["Laravel", "inertiajs", "inertia", "InertiaTable"],
     "require": {
-        "illuminate/support": "~5||~6",
+        "illuminate/support": "~5 || ~6",
         "inertiajs/inertia-laravel": "^0.1.0",
         "symfony/process": "^4.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.0",
         "mockery/mockery": "^1.1",
-        "orchestra/testbench": "~3.0",
+        "orchestra/testbench": "~3.0 || ~4.0",
         "sempro/phpunit-pretty-print": "^1.0"
     },
     "autoload": {

@@ -20,11 +20,11 @@ class InertiaTableServiceProvider extends ServiceProvider
     public function boot()
     {
         // Easily create all the inertia routes
-        Route::macro('inertiaTable', function ($routeName, $routeKey = null) {
+        Route::macro('inertiaTable', function ($routeName, $controller = null, $routeKey = null) {
             $routeName = strtolower($routeName);
             $routeKey = $routeKey ? $routeKey : Str::singular($routeName);
             $routePlaceholder = sprintf('{%s}', $routeKey);
-            $controller = ucfirst($routeName).'Controller';
+            $controller = $controller ? $controller : ucfirst($routeName).'Controller';
 
 
             Route::group([

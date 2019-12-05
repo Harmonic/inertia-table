@@ -36,7 +36,7 @@ class InertiaTable
             'filters' => Request::all('search', 'trashed'),
             'order' => Request::all('orderColumn', 'orderDirection'),
             strtolower($modelPlural) => $model
-                ->order(Request::input('orderColumn') ?? 'name', Request::input('orderDirection'))
+                ->order(Request::input('orderColumn') ?? $model->getKeyName(), Request::input('orderDirection'))
                 ->filter(Request::only('search', 'trashed'), $filterable)
                 ->get()
                 ->transform(function ($item) use ($columns) {

@@ -13,7 +13,7 @@ Can scaffold an entire model with one artisan command!
 ## Installation
 
 This package requires InertiaJS to be installed in your project.
-**It is strongly recommended that you also install to corresponding Vue component [inertia-table-vue](https://github.com/Harmonic/inertia-table-vue) to allow end to end scaffolding of an Inertia table in Vue **
+**It is strongly recommended that you also install the corresponding Vue component [inertia-table-vue](https://github.com/Harmonic/inertia-table-vue) to allow end to end scaffolding of an Inertia table in Vue**
 
 Via Composer
 

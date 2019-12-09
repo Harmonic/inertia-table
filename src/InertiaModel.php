@@ -2,8 +2,8 @@
 
 namespace harmonic\InertiaTable;
 
-use Illuminate\Database\Eloquent\Model;
 use harmonic\InertiaTable\Traits\InertiaTable;
+use Illuminate\Database\Eloquent\Model;
 
 class InertiaModel extends Model
 {

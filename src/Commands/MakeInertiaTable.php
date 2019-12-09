@@ -3,11 +3,11 @@
 namespace harmonic\InertiaTable\Commands;
 
 use File;
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;
-use Symfony\Component\Process\Process;
+use Illuminate\Support\Str;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class MakeInertiaTable extends Command
 {

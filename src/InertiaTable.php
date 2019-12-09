@@ -2,6 +2,7 @@
 
 namespace harmonic\InertiaTable;
 
+use Illuminate\Database\Eloquent\Model;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
@@ -12,12 +13,12 @@ class InertiaTable
     /**
      * Generates inertia view data for model.
      *
-     * @param InertiaModel $model The model to use to retrieve data
+     * @param Model $model The model to use to retrieve data
      * @param array $columns An array of column names to send to front end (null for all columns)'
      * @param array $filterable A subset of the $columns array containing names of columsn that can be filtered
      * @return void
      */
-    public function index(InertiaModel $model, array $columns = null, array $filterable = null)
+    public function index(Model $model, array $columns = null, array $filterable = null)
     {
         $modelName = class_basename($model);
 
@@ -36,7 +37,7 @@ class InertiaTable
             'filters' => Request::all('search', 'trashed'),
             'order' => Request::all('orderColumn', 'orderDirection'),
             strtolower($modelPlural) => $model
-                ->order(Request::input('orderColumn') ?? 'name', Request::input('orderDirection'))
+                ->order(Request::input('orderColumn') ?? $model->getKeyName(), Request::input('orderDirection'))
                 ->filter(Request::only('search', 'trashed'), $filterable)
                 ->get()
                 ->transform(function ($item) use ($columns) {

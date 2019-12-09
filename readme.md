@@ -109,6 +109,7 @@ If you discover any security related issues, please email craig@harmonic.com.au 
 ## Credits
 
 - [Craig Harman][link-author]
+- Laravel 6 support by [atymic](https://github.com/atymic)
 - [All Contributors][link-contributors]
 
 ## License

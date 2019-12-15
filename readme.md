@@ -39,7 +39,7 @@ Where User is the name of the model you wish to create. See the manual process b
 ``` php
 use harmonic\InertiaTable\InertiaModel;
 
-class user extends InertialModel {
+class user extends InertiaModel {
     protected $perPage = 10; // Controlls number of items per page
 ...
 ```

@@ -2,6 +2,12 @@
 
 All notable changes to `InertiaTable` will be documented in this file.
 
+## Version 1.0.7
+
+### Added
+- Support inertia 0.2.x
+- Add missing `remember` middleware package + install docs
+
 ## Version 1.0.6
 
 ### Added

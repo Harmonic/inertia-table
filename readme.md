@@ -21,6 +21,15 @@ Via Composer
 $ composer require harmonic/inertia-table
 ```
 
+Register the `remember` route middleware in your `App\HttpKernel` class:
+
+```php
+protected $routeMiddleware = [
+    // ..
+    'remember' => \Reinink\RememberQueryStrings::class,
+];
+```
+
 ## Usage
 
 ### Via CLI

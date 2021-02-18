@@ -11,7 +11,7 @@ use Symfony\Component\Process\Process;
 
 class MakeInertiaTable extends Command
 {
-    use \Illuminate\Console\DetectsApplicationNamespace;
+    // use \Illuminate\Console\DetectsApplicationNamespace;
 
     /**
      * The name and signature of the console command.
@@ -71,7 +71,7 @@ class MakeInertiaTable extends Command
         if (! file_exists(app_path($model).'.php') && ! file_exists(app_path('Models\\'.$model).'.php')) {
             // Create Model
             $str = file_get_contents(__DIR__.'/../Stubs/Model.php');
-            $str = str_replace('@namespace', substr($this->getAppNamespace(), 0, -1), $str);
+            $str = str_replace('@namespace', 'App\Models', $str);
             $str = str_replace('@modelName', $model, $str);
             file_put_contents(app_path($model.'.php'), $str);
         }
@@ -80,7 +80,7 @@ class MakeInertiaTable extends Command
         $pluralName = Str::plural($model);
         $controllerName = $pluralName.'Controller';
         $str = file_get_contents(__DIR__.'/../Stubs/Controller.php');
-        $str = str_replace('@namespace', substr($this->getAppNamespace(), 0, -1), $str);
+        $str = str_replace('@namespace', 'App\Models', $str);
         $str = str_replace('@controllerName', $controllerName, $str);
         $str = str_replace('@modelName', $model, $str);
         file_put_contents(app_path('Http/Controllers/'.$controllerName.'.php'), $str);
@@ -88,12 +88,12 @@ class MakeInertiaTable extends Command
         // Add routes
         $this->warn('You need to manually add route: Route::inertiaTable(\''.Str::plural(strtolower($model)).'\');');
 
-        if ($this->inertiaTableJSExists()) {
+        // if ($this->inertiaTableJSExists()) {
             $pluralNameLowercase = \strtolower($pluralName);
             $modelLowercase = \strtolower($model);
 
             // Get column names from table
-            $class = 'App\\'.$model;
+            $class = 'App\Models\\'.$model;
             $columns = Schema::getColumnListing(with(new $class)->getTable());
 
             // Create an InertiaTable.vue component and then create Index.vue using it
@@ -105,7 +105,7 @@ class MakeInertiaTable extends Command
             $str = str_replace('@columns', '"'.implode('","', $columns).'"', $str);
             $str = str_replace('@modelLowercase', $modelLowercase, $str);
             file_put_contents($tableElementPath.'/Index.vue', $str);
-        }
+        // }
 
         $this->info('Model, Controller and Vue Components successfully created.');
     }

@@ -9,7 +9,7 @@ class InertiaModel extends Model
 {
     use InertiaTable;
 
-    public function resolveRouteBinding($value)
+    public function resolveRouteBinding($value, $field = NULL)
     {
         return $this->where('id', $value)->withTrashed()->first() ?? abort(404);
     }

@@ -12,10 +12,10 @@
     "homepage": "https://github.com/harmonic/inertiatable",
     "keywords": ["Laravel", "inertiajs", "inertia", "InertiaTable"],
     "require": {
-        "illuminate/support": "~5 || ~6",
-        "inertiajs/inertia-laravel": "^0.2.0",
+        "illuminate/support": "^8",
+        "inertiajs/inertia-laravel": "^0.3.6",
         "reinink/remember-query-strings": "^0.1.0",
-        "symfony/process": "^4.3"
+        "symfony/process": "^5.2.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.0",
